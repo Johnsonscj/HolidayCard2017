@@ -1,48 +1,25 @@
-
-Snow [] s;
-PImage img;
+int speed= 5;
+int speed1 = 10;
+float x=0;
+float y=0;
 void setup() {
-  size(800, 400);
-  s=new Snow[100];
-  img = loadImage("java.png");
-  for (int i=0; i<s.length; i++) {
-    s[i]= new Snow();
-  }
+  size(1200, 600);
 }
 
 void draw() {
-  background(0);
-  image(img, 0, 0);
-  for (int i=0; i<s.length; i++) {
-    s[i].addPhysics();
-    s[i].snow();
+  background(45);
+  if(y+10==600){
+ speed = -5;
   }
-}
-
-
-class Snow {
-  float acceleration;
-  //float velocity=.2;
-  float velocity=(float)Math.random();
-  float xlocation;
-  float ylocation;
-  float xloc=(float)Math.random();
-  float yloc;
-  float s=(float)Math.random()*20;
-  float [] f;
-  Snow() {
-    //xlocation=(float)Math.random()*width;
-    xlocation=random(-4, width);
-    ylocation=0;
+  
+  if(x+10 ==1200){
+    speed1=-10;
   }
-  void addPhysics() {
-    yloc=acceleration+velocity;
+  if(x-10 ==0){
+    speed1=10;
   }
-  void snow() {
-    fill(255, 255, 255);
-    ellipse(xlocation+=xloc, ylocation+=yloc, s, s);
-    if (ylocation>height) {
-      ylocation=0;
-    }
+  if(y-10 == 0){
+   speed = 5; 
   }
+  ellipse(x+=speed1, y+=speed, 20, 20);
 }
